@@ -51,10 +51,10 @@ const app = new Vue({
             this.$store.state.messaging
                 .requestPermission()
                 .then(function () {
-                    console.log("Permission accepted")
+//                     console.log("Permission accepted")
                 })
                 .catch(function (error) {
-                    console.log("Permission denied")
+//                     console.log("Permission denied")
                 })
         }
     },
