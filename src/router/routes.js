@@ -5,6 +5,7 @@ import UpdateProfile from '@/components/auth/UpdateProfile'
 import App from '@/components/App'
 import NotFound from '@/components/errors/404'
 import Firestore from '@/components/Firestore'
+import UploadNewMusic from '@/components/UploadNewMusic'
 
 import Vue from 'vue'
 
@@ -42,6 +43,14 @@ const routes = [{
             component: Firestore,
             name: 'Cloud Firestore',
             meta: {
+                auth: true
+            }
+        },
+        {
+            path: '/upload',
+            component: UploadNewMusic,
+            name: 'Upload',
+            meta : {
                 auth: true
             }
         },
