@@ -23,6 +23,7 @@
     "dependencies": {
         "axios": "^0.16.1",
         "firebase": "^5.0.4",
+        "howler": "^2.1.1",
         "install": "^0.11.0",
         "myfirebase": "^0.4.3",
         "npm": "^6.1.0",
