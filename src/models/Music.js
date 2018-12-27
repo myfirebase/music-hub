@@ -12,6 +12,26 @@ class Music extends FirestoreModel {
     }
 
     /**
+     * Set music name.
+     * 
+     * @param {string} name
+     */
+    setName (name) {
+        this.musicName = name
+        return this
+    }
+
+    /**
+     * Set music url.
+     * 
+     * @param {string} url
+     */
+    setUrl (url) {
+        this.url = url
+        return this
+    }
+
+    /**
      * Define required properties.
      * 
      * @return array
