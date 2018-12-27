@@ -23,6 +23,11 @@
               <v-list-tile-title>Index</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
+          <v-list-tile @click="$router.push('/upload')">
+            <v-list-tile-content>
+              <v-list-tile-title>Uoload New Music</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
           <v-list-tile @click="$router.push('/update-profile')">
             <v-list-tile-content>
               <v-list-tile-title>Update profile</v-list-tile-title>
