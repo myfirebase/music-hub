@@ -6,9 +6,6 @@
       <div>
         <v-text-field v-model="music.name" label="Music" prepend-icon='attach_file' @click="$refs.music.click()"></v-text-field>
         <input type="file" style="display: none" ref="music" @change="getMusic">
-
-        <v-text-field v-model="artwork.name" label="Artwork" prepend-icon='attach_file' @click="$refs.avatar.click()"></v-text-field>
-        <input type="file" style="display: none" ref="artwork" accept="image/*" @change="getArtwork">
       </div>
     </v-card-title>
     <v-card-actions>
@@ -21,16 +18,23 @@
 <script>
 
 import Music from '@/models/Music'
+import GlobalMixin from '@/mixins/global'
 
 export default {
     mounted () {
+        this.Music = new Music(this.userCollection).init()
     },
+    mixins: [GlobalMixin],
     data () {
         return {
-            Music: new Music(),
-            artwork: {},
+            Music: {},
             music: {},
             ready: false
+        }
+    },
+    firestore () {
+        return {
+
         }
     },
     computed: {
@@ -42,26 +46,24 @@ export default {
         upload () {
 
         },
-        getArtwork (e) {
-          this.artwork = e.target.files[0]
-          // console.log(this.artwork.name)
-        },
         getMusic(e) {
           this.music = e.target.files[0]
-          // console.log(this.music.name)
         },
         processAndUpload () {
             this.$storage.upload({
-                ref: `music/${this.user.uid}/${this.music.name}`,
+                ref: `music/${this.user.uid}/sss${this.music.name}`,
                 file: this.music,
                 progress: () => {
-
+                    // TODO
                 },
                 error: () => {
-
+                    // TODO
                 },
-                completed: () => {
-                    console.log('Done')
+                completed: (url) => {
+                    this.Music.setName(this.music.name).setUrl(url).add()
+                    .then(() => {
+                        // Handle the response
+                    })
                 }
             })
         }
