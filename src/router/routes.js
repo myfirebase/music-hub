@@ -7,6 +7,8 @@ import NotFound from '@/components/errors/404'
 import Firestore from '@/components/Firestore'
 import UploadNewMusic from '@/components/UploadNewMusic'
 import MyMusic from '@/components/MyMusic'
+import UploadArtwork from '@/components/UploadArtwork'
+import MyArtwork from '@/components/MyArtwork'
 
 import Vue from 'vue'
 
@@ -60,6 +62,22 @@ const routes = [{
             component: MyMusic,
             name: 'my-music',
             meta : {
+                auth: true
+            }
+        },
+        {
+            path: '/upload-artwork',
+            component: UploadArtwork,
+            name: 'upload-artwork',
+            meta: {
+                auth: true
+            }
+        },
+        {
+            path: '/artwork',
+            component: MyArtwork,
+            name: 'artwork',
+            meta: {
                 auth: true
             }
         },
