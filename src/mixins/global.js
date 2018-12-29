@@ -13,6 +13,9 @@ export default {
         },
         userCollection () {
             return this.$store.state.firestore.collection('users').doc(this.userId).collection('music')
+        },
+        userArtwork () {
+            return this.$store.state.firestore.collection('users').doc(this.userId).collection('artwork')
         }
     },
     methods: {
