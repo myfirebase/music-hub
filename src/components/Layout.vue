@@ -33,6 +33,11 @@
               <v-list-tile-title>Upload New Music</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
+          <v-list-tile @click="$router.push('/upload-artwork')">
+            <v-list-tile-content>
+              <v-list-tile-title>Upload New Artwork</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
           <v-list-tile @click="$router.push('/update-profile')">
             <v-list-tile-content>
               <v-list-tile-title>Update profile</v-list-tile-title>
@@ -62,8 +67,7 @@
         </v-container>
       </v-content>
       <v-footer app>
-        <span>&copy; 2018</span>
-        <v-spacer></v-spacer>
+        <!-- <audio src="" controls="true"></audio> -->
       </v-footer>
     </v-app>
 </template>
