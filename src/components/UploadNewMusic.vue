@@ -51,7 +51,7 @@ export default {
         },
         processAndUpload () {
             this.$storage.upload({
-                ref: `music/${this.user.uid}/sss${this.music.name}`,
+                ref: `music/${this.user.uid}/${this.music.name}`,
                 file: this.music,
                 progress: () => {
                     // TODO
