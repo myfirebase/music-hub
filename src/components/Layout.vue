@@ -33,6 +33,11 @@
               <v-list-tile-title>Upload New Music</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
+          <v-list-tile @click="$router.push('/artwork')">
+            <v-list-tile-content>
+              <v-list-tile-title>My Artwork</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
           <v-list-tile @click="$router.push('/upload-artwork')">
             <v-list-tile-content>
               <v-list-tile-title>Upload New Artwork</v-list-tile-title>
