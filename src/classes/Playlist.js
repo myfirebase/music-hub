@@ -1,3 +1,5 @@
+import {Howl, Howler} from 'howler'
+
 export default class Playlist {
     constructor (music = []) {
         this.music = []
@@ -6,7 +8,11 @@ export default class Playlist {
 
     fillPlaylist (music) {
         music.forEach((music) => {
-            this.music.push(music)
+            this.music.push({url: music, howl: new Howl({
+                    src: music,
+                    html5: false
+                }), playing: false
+            })
         })
     }
 
