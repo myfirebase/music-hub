@@ -5,7 +5,7 @@
         <audio ref="player" :src="currentlyPlaying" controls="true"></audio>
         <v-list-tile v-for="(music, index) in musics" :key="index">
           <v-list-tile-content>
-            <v-list-tile-title>{{music.musicName}}</v-list-tile-title>
+            <v-list-tile-title>{{music.name}}</v-list-tile-title>
           </v-list-tile-content>
           <v-list-tile-action>
             <v-icon color="black" @click="play(music.url)">delete</v-icon>
