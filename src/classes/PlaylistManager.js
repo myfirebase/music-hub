@@ -34,10 +34,8 @@ export default class PlaylistMnager {
 
     playNext () {
         let index = this.findMusicIndex()
-        console.log(index)
         if (index != null && index != undefined && index != this.playlist.music.length - 1) {
             this.play(index + 1)
-            console.log(index)
         }
     }
 
