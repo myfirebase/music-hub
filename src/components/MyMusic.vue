@@ -5,12 +5,13 @@
         <!-- <audio ref="player" :src="currentlyPlaying" controls="true"></audio> -->
         <v-btn color="success" @click="play">Play</v-btn>
         <v-btn color="info" @click="pause">Pause</v-btn>
+        <v-btn color="warning" @click="playNext">Play next</v-btn>
         <v-list-tile v-for="(music, index) in musics" :key="index">
           <v-list-tile-content>
             <v-list-tile-title>{{music.name}}</v-list-tile-title>
           </v-list-tile-content>
           <v-list-tile-action>
-            <v-icon color="black" @click="play(music.url)">delete</v-icon>
+            <v-icon color="black" @click="play(index)">delete</v-icon>
           </v-list-tile-action>
         </v-list-tile>
       </v-list>
@@ -27,12 +28,6 @@ export default {
     created () {
         this.$binding('musics', this.userCollection).then((music) => {
             this.playlistManager.playlist.fillPlaylist(music.map((music) => music['url']))
-            let audioManager =  new Howl({
-                src: this.playlistManager.playlist.getPlaylist(),
-                html5: false
-            });
-            console.log(audioManager)
-            this.playlistManager.setAudioManager(audioManager)
             // this.playlistManager.play()
             // console.log(this.playlistManager)
         })
@@ -44,13 +39,14 @@ export default {
         }
     },
     methods: {
-        play (url) {
-            console.log('playing')
-            this.playlistManager.play()
+        play (index) {
+            this.playlistManager.play(index)
         },
         pause () {
-            console.log('pause')
-            this.playlistManager.pause()
+            this.playlistManager.puaseAllPlaylist()
+        },
+        playNext () {
+            this.playlistManager.playNext()
         }
     }
 }
