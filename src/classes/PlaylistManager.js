@@ -9,10 +9,6 @@ export default class PlaylistMnager {
         this.manager = manager
     }
 
-    playNext () {
-
-    }
-
     puaseAllPlaylist () {
         for (var i = 0; i < this.playlist.music.length; i++) {
             if (this.playlist.music[i].playing == true) {
