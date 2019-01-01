@@ -11,7 +11,7 @@ export default class Playlist {
             this.music.push({url: music, howl: new Howl({
                     src: music,
                     html5: false
-                }), playing: false
+                }), playing: false, paused: false, topped: true
             })
         })
     }
