@@ -4,6 +4,7 @@
     <v-avatar></v-avatar>
     <v-card-title>
       <div>
+        <v-text-field v-model="Music.name" label="Music Name" prepend-icon='edit'></v-text-field>
         <v-text-field v-model="music.name" label="Music" prepend-icon='attach_file' @click="$refs.music.click()"></v-text-field>
         <input type="file" style="display: none" ref="music" @change="getMusic">
       </div>
@@ -60,7 +61,7 @@ export default {
                     // TODO
                 },
                 completed: (url) => {
-                    this.Music.setName(this.music.name).setUrl(url).add()
+                    this.Music.setUrl(url).add()
                     .then(() => {
                         // Handle the response
                     })
