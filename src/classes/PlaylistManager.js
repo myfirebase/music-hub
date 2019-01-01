@@ -13,11 +13,45 @@ export default class PlaylistMnager {
 
     }
 
-    play () {
-        this.manager.play()
+    puaseAllPlaylist () {
+        for (var i = 0; i < this.playlist.music.length; i++) {
+            if (this.playlist.music[i].playing == true) {
+                this.playlist.music[i].howl.pause()
+                this.playlist.music[i].playing = false
+            }
+        }
     }
 
-    pause () {
-        this.manager.pause()
+    findMusicIndex () {
+        for (var i = 0; i < this.playlist.music.length; i++) {
+            if (this.playlist.music[i].playing == true) {
+                return i
+            }
+        }
+
+        return null
+    }
+
+    playNext () {
+        let index = this.findMusicIndex()
+        console.log(index)
+        if (index != null && index != undefined && index != this.playlist.music.length - 1) {
+            this.play(index + 1)
+            console.log(index)
+        }
+    }
+
+    play (index) {
+        this.puaseAllPlaylist()
+        let music = this.playlist.music[index]
+        music.playing = true
+        music.howl.play()
+    }
+
+    pause (index) {
+        let music = this.playlist.music[index]
+        // this.manager.pause()
+        music.howl.pause()
+
     }
 }
