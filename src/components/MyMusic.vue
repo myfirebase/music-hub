@@ -2,7 +2,9 @@
     <v-card>
       <v-list two-line subheader>
         <v-subheader>All Music</v-subheader>
-        <audio ref="player" :src="currentlyPlaying" controls="true"></audio>
+        <!-- <audio ref="player" :src="currentlyPlaying" controls="true"></audio> -->
+        <v-btn color="success" @click="play">Play</v-btn>
+        <v-btn color="info" @click="pause">Pause</v-btn>
         <v-list-tile v-for="(music, index) in musics" :key="index">
           <v-list-tile-content>
             <v-list-tile-title>{{music.name}}</v-list-tile-title>
@@ -18,14 +20,24 @@
 <script>
 
 import GlobalMixin from '@/mixins/global'
+import PlaylistMixin from '@/mixins/playlist'
+import {Howl, Howler} from 'howler'
 
 export default {
     created () {
         this.$binding('musics', this.userCollection).then((music) => {
-            // Completed
+            this.playlistManager.playlist.fillPlaylist(music.map((music) => music['url']))
+            let audioManager =  new Howl({
+                src: this.playlistManager.playlist.getPlaylist(),
+                html5: false
+            });
+            console.log(audioManager)
+            this.playlistManager.setAudioManager(audioManager)
+            // this.playlistManager.play()
+            // console.log(this.playlistManager)
         })
     },
-    mixins: [GlobalMixin],
+    mixins: [GlobalMixin, PlaylistMixin],
     data () {
         return {
             currentlyPlaying: ""
@@ -33,14 +45,12 @@ export default {
     },
     methods: {
         play (url) {
-            this.currentlyPlaying = url
-            // console.log(this.$refs.player)
-            // console.log()
-            this.$refs.player.play().then(() => {
-                console.log('ok')
-            }).catch((err) => {
-                console.log(err)
-            })
+            console.log('playing')
+            this.playlistManager.play()
+        },
+        pause () {
+            console.log('pause')
+            this.playlistManager.pause()
         }
     }
 }
