@@ -43,7 +43,7 @@ export default {
             this.playlistManager.play(index)
         },
         pause () {
-            this.playlistManager.puaseAllPlaylist()
+            this.playlistManager.pause()
         },
         playNext () {
             this.playlistManager.playNext()
