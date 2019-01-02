@@ -9,7 +9,16 @@ export default class PlaylistMnager {
         this.manager = manager
     }
 
-    puaseAllPlaylist () {
+    stop () {
+        for (var i = 0; i < this.playlist.music.length; i++) {
+            if (this.playlist.music[i].playing == true) {
+                this.playlist.music[i].howl.stop()
+                this.playlist.music[i].playing = false
+            }
+        }
+    }
+
+    pause () {
         for (var i = 0; i < this.playlist.music.length; i++) {
             if (this.playlist.music[i].playing == true) {
                 this.playlist.music[i].howl.pause()
@@ -36,16 +45,9 @@ export default class PlaylistMnager {
     }
 
     play (index) {
-        this.puaseAllPlaylist()
+        this.stop()
         let music = this.playlist.music[index]
         music.playing = true
         music.howl.play()
-    }
-
-    pause (index) {
-        let music = this.playlist.music[index]
-        // this.manager.pause()
-        music.howl.pause()
-
     }
 }
