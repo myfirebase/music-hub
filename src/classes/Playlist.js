@@ -10,7 +10,7 @@ export default class Playlist {
         music.forEach((music) => {
             this.music.push({url: music, howl: new Howl({
                     src: music,
-                    html5: false
+                    html5: true
                 }), playing: false, paused: false, topped: true
             })
         })
