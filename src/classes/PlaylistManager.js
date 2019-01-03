@@ -44,9 +44,9 @@ export default class PlaylistMnager {
         }
     }
 
-    play (index) {
+    play (index = null) {
         this.stop()
-        let music = this.playlist.music[index]
+        let music = index ? this.playlist.music[index] : this.playlist.music[0]
         music.playing = true
         music.howl.play()
     }
