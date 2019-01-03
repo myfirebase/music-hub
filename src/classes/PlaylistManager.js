@@ -44,6 +44,13 @@ export default class PlaylistMnager {
         }
     }
 
+    playPrev () {
+        let index = this.findMusicIndex()
+        if (index != null && index != undefined && index > 0) {
+            this.play(index - 1)
+        }
+    }
+
     play (index = null) {
         this.stop()
         let music = index ? this.playlist.music[index] : this.playlist.music[0]
