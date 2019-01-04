@@ -3,8 +3,10 @@
       <v-list two-line subheader>
         <v-subheader>All Music</v-subheader>
         <!-- <audio ref="player" :src="currentlyPlaying" controls="true"></audio> -->
-        <v-btn color="success" @click="play()">Play</v-btn>
-        <v-btn color="info" @click="pause">Pause</v-btn>
+        <v-btn color="success" @click="resume()">
+            <span>Play | Pause</span>
+        </v-btn>
+        <!-- <v-btn color="info" @click="pause">Pause</v-btn> -->
         <v-btn color="default" @click="playPrev">Play Prev</v-btn>
         <v-btn color="warning" @click="playNext">Play next</v-btn>
         <v-list-tile v-for="(music, index) in musics" :key="index">
@@ -45,6 +47,14 @@ export default {
         },
         pause () {
             this.playlistManager.pause()
+        },
+        resume () {
+            if (this.playlistManager.playlist.isPlaying) {
+                this.playlistManager.pause()
+                return
+            }
+            let index = this.playlistManager.findPausedIndex()
+            this.playlistManager.play(index)
         },
         playNext () {
             this.playlistManager.playNext()
