@@ -4,6 +4,7 @@ export default class Playlist {
     constructor (music = []) {
         this.music = []
         this.fillPlaylist(music)
+        this.isPlaying = false
     }
 
     fillPlaylist (music) {
@@ -22,5 +23,9 @@ export default class Playlist {
 
     getPlaylist () {
         return this.music
+    }
+
+    togglePlaying () {
+        this.isPlaying = !this.isPlaying 
     }
 }
