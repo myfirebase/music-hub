@@ -13,7 +13,9 @@ export default class PlaylistMnager {
         for (var i = 0; i < this.playlist.music.length; i++) {
             if (this.playlist.music[i].playing == true) {
                 this.playlist.music[i].howl.stop()
+                this.playlist.togglePlaying(false)
                 this.playlist.music[i].playing = false
+                this.playlist.music[i].paused = false
             }
         }
     }
@@ -21,7 +23,7 @@ export default class PlaylistMnager {
     pause () {
         for (var i = 0; i < this.playlist.music.length; i++) {
             if (this.playlist.music[i].playing == true) {
-                this.playlist.togglePlaying()
+                this.playlist.togglePlaying(false)
                 this.playlist.music[i].howl.pause()
                 this.playlist.music[i].playing = false
                 this.playlist.music[i].paused = true
@@ -67,8 +69,8 @@ export default class PlaylistMnager {
         this.stop()
         let music = index ? this.playlist.music[index] : this.playlist.music[0]
         music.playing = true
-        music.pasued = false
-        this.playlist.togglePlaying()
+        music.paused = false
+        this.playlist.togglePlaying(true)
         music.howl.play()
     }
 }
