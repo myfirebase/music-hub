@@ -6,9 +6,10 @@
         <v-btn color="success" @click="resume()">
             <span>Play | Pause</span>
         </v-btn>
-        <!-- <v-btn color="info" @click="pause">Pause</v-btn> -->
-        <v-btn color="default" @click="playPrev">Play Prev</v-btn>
+        <v-btn color="info" @click="playPrev">Play Prev</v-btn>
         <v-btn color="warning" @click="playNext">Play next</v-btn>
+        <v-btn color="error" @click="stop">Stop</v-btn>
+
         <v-list-tile v-for="(music, index) in musics" :key="index">
           <v-list-tile-content>
             <v-list-tile-title>{{music.name}}</v-list-tile-title>
@@ -54,6 +55,7 @@ export default {
                 return
             }
             let index = this.playlistManager.findPausedIndex()
+            console.log(index)
             this.playlistManager.play(index)
         },
         playNext () {
@@ -61,6 +63,9 @@ export default {
         },
         playPrev () {
             this.playlistManager.playPrev()
+        },
+        stop () {
+            this.playlistManager.stop()
         }
     }
 }
