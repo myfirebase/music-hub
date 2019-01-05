@@ -25,7 +25,7 @@ export default class Playlist {
         return this.music
     }
 
-    togglePlaying () {
-        this.isPlaying = !this.isPlaying 
+    togglePlaying (status) {
+        this.isPlaying = status
     }
 }
