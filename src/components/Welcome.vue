@@ -18,7 +18,7 @@
 </template>
 <script>
 export default {
-    mouted () {
+    mounted () {
         // component mounted
     },
     data () {
