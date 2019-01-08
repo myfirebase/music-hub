@@ -73,4 +73,8 @@ export default class PlaylistMnager {
         this.playlist.togglePlaying(true)
         music.howl.play()
     }
+
+    getCurrentPlaying () {
+        return this.playlist.music.find((music) => music.playing == true)
+    }
 }
