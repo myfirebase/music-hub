@@ -51,6 +51,16 @@ export default class PlaylistMnager {
         return null
     }
 
+    findMusicByIndex (index) {
+        return this.playlist.music[index]
+    }
+
+    setSeekCallback (index, callBack) {
+        console.log(index)
+        // this.findMusicIndex(index).howl.onSeek = callback
+        console.log(this.findMusicByIndex(index))
+    }
+
     playNext () {
         let index = this.findMusicIndex()
         if (index != null && index != undefined && index != this.playlist.music.length - 1) {
@@ -65,12 +75,14 @@ export default class PlaylistMnager {
         }
     }
 
-    play (index = null) {
+    play (index = null, callback) {
         this.stop()
         let music = index ? this.playlist.music[index] : this.playlist.music[0]
         music.playing = true
         music.paused = false
         this.playlist.togglePlaying(true)
+        // music.howl.on('play', callback)
+        music.howl.on('seek', callback)
         music.howl.play()
     }
 
