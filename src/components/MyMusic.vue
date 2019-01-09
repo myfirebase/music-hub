@@ -61,7 +61,10 @@ export default {
                 return
             }
             let index = this.playlistManager.findPausedIndex()
-            this.playlistManager.play(index)
+
+            this.playlistManager.play(index, function () {
+                console.log('seek')
+            })
         },
         playNext () {
             this.playlistManager.playNext()
